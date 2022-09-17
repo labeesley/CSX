@@ -555,77 +555,152 @@ Using a FOR loop, write a function addN
   which adds the argument n to each number in the array arr and returns the updated arr.
 */
 
-//declare a function addN that accepts an array of numbers and a number as its 2 parameters (arr, n)
+//declare a function addN
+//input: array, number
+//output: array
 function addN(arr, n){
-	//use a for loop to iterate the array
-  for(let i = 0; i < arr.length; i++){
-		//add the argument to every item in the array
-    arr[i] += n;
+  // ADD CODE HERE
+  for (let i = 0; i < arr.length; i++){
+    //+= use this to add n and reaassign the value of arr[i] w/in the array
+   	arr[i] += n;
   }
-  //return the new array
   return arr;
 } 
-//make sure your are returning the value of your variable outside of the for loop
+
 // Uncomment these to check your work!
 console.log(addN([1, 2, 3], 3)); // expected log [4, 5, 6]
 console.log(addN([3, 4, 5], 2)); // expected log [5, 6, 7]
 
-//declare a function addN that accepts an array of numbers and a number as its 2 parameters (arr, n)
-// function addN(arr, n){
-  // //declare a variable to store your array
-  // let addArr = [];
-	//use a for loop to iterate the array
-//   for(let i = 0; i < arr.length; i++){
-		//add the argument to every item in the array
-//     arr[i] + n;
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Challenge 19: For Loops - Summing Array Elements
+
+/*
+Using a FOR loop, write a function getTheSum which adds each element in arr to find the array total.
+*/
+
+//declare function getTheSum
+//input: array (numbers)
+//output: number (total of all input elements)
+function getTheSum(arr){
+  // ADD CODE HERE
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++){
+    sum += arr[i];
+  }
+  return sum;
+}
+
+// Uncomment these to check your work!
+console.log(getTheSum([3, 6, 9])); // expected log 18
+console.log(getTheSum([10, 11, 12])); // expected log 33
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Challenge 20: multiplyAll
+
+/*
+Create a function multiplyAll that takes an unknown number of integer arguments, 
+	multiplies them all together, and returns the result.
+*/
+
+//declare function multiplyAll
+//input: number (unknown number of integer arguments)
+//output: number (all inputs multiplied together)
+//since the number of arguments is unknown, we are going to use the rest parameter (...parameter)
+const multiplyAll = (...num) => {
+  let product = 1;
+  for (let i = 0; i < num.length; i++){
+    product *= num[i];
+  }
+  return product;
+}
+
+// Uncomment these to check your work!
+console.log(multiplyAll(9, 4, 5, 6, 7, 2, 1, 8, 3)) // should log: 362880
+console.log(multiplyAll(5, 5, 5, 3)) // should log: 375
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Challenge 21: Loops - Summing Two Arrays
+
+/*
+Write a function mergingElements which adds each element in array1 to the corresponding element of array2 
+	and returns the new array.
+*/
+
+//declare function mergingElements
+//input: array (2)
+//output: array (sum of elements from input arrays)
+function mergingElements(array1, array2){
+  // ADD CODE HERE
+  let merged = [];
+  for (let i = 0; i < array1.length; i++) {
+    //push the sum of the elements at each index into the new array
+    merged.push(array1[i] + array2[i]);
+  }
+  return merged;
+}
+
+// Uncomment these to check your work!
+console.log(mergingElements([1, 2, 3, 4], [5, 6, 7, 8])); // expected log [6, 8, 10, 12]
+console.log(mergingElements([7, 3, 6, 0], [3, 9, 17, 81])); // expected log [10, 12, 23, 81]
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Challenge 22: Loops & Control Flow
+
+/*
+Write a function mergingTripletsAndQuints which takes in two arrays as arguments. 
+	This function will return a new array replacing the elements in array1 if they are divisible by 3 or 5. 
+	The number should be replaced with the sum of itself added to the element at the corresponding index in array2.
+*/
+
+//declare a function called mergingTripletsAndQuints that accepts two arrays of numbers as a parameter
+function mergingTripletsAndQuints(array1, array2) {
+  //declare a variable called newArray equal to an empty array
+  const newArray = [];
+  //use a for loop  
+  for (let i = 0; i < array1.length; i++) {
+    //if statement (array1[i] % 3 === 0 || array1[i] % 5 === 0) {
+    if (array1[i] % 3 === 0 || array1[i] % 5 === 0) {
+      //then replace that element with the sum of array1[i] + array2[i]
+      newArray.push(array1[i] + array2[i]);
+    } 
+    //} else {push array1[i]}
+    else {
+      newArray.push(array1[i]);
+    }
+  }
+  //return newArray
+  return newArray;
+}
+
+//another way of solving it is by reassigning the values in array1
+//function mergingTripletsAndQuints(array1, array2) {
+//   for (let i = 0; i < array1.length; i++) {
+//     if (array1[i] % 3 === 0 || array1[i] % 5 === 0) {
+//       array1[i] = array1[i] + array2[i];
+//     } 
 //   }
-//   return addArr;
-// } 
-//*declaring a variable with an open array might be redundant
-//this works but we can bypass declaring the variable by using 
-//arr[i] += n (to add the argument n to every element of the array)
-////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////
+//     return array1;
+// }
 
-//Challenge 19:
-
-
-
-
+// Uncomment these to check your work!
+console.log(mergingTripletsAndQuints([1, 2, 3, 4, 5, 15], [1, 3, 6, 7, 8, 9])); // expected log [1, 2, 9, 4, 13, 24]
+console.log(mergingTripletsAndQuints([1, 1, 3, 9, 5, 15], [1, 2, 3, 4, 5, 6])); // expected log [1, 1, 6, 13, 10, 21]
 
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-//Challenge 20:
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////
-
+//Challenge 23:
 
 
 
