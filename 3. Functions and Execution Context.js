@@ -661,50 +661,96 @@ Write a function mergingTripletsAndQuints which takes in two arrays as arguments
 	The number should be replaced with the sum of itself added to the element at the corresponding index in array2.
 */
 
-//declare a function called mergingTripletsAndQuints that accepts two arrays of numbers as a parameter
-function mergingTripletsAndQuints(array1, array2) {
-  //declare a variable called newArray equal to an empty array
-  const newArray = [];
-  //use a for loop  
-  for (let i = 0; i < array1.length; i++) {
-    //if statement (array1[i] % 3 === 0 || array1[i] % 5 === 0) {
-    if (array1[i] % 3 === 0 || array1[i] % 5 === 0) {
-      //then replace that element with the sum of array1[i] + array2[i]
-      newArray.push(array1[i] + array2[i]);
-    } 
-    //} else {push array1[i]}
-    else {
-      newArray.push(array1[i]);
-    }
-  }
-  //return newArray
-  return newArray;
-}
-
-//another way of solving it is by reassigning the values in array1
-//function mergingTripletsAndQuints(array1, array2) {
-//   for (let i = 0; i < array1.length; i++) {
+//declare a function mergingTripletsAndQuints
+//input: array (2: numbers)
+//output: array (replace elements in array1 that are divisible by 3 and 5 with the sum of element added to the element at the corresponding index in array2)
+// function mergingTripletsAndQuints(array1, array2) {
+//  // ADD CODE HERE
+//   let newArr = [];
+//   for (let i = 0; i < array1.length; i++){
 //     if (array1[i] % 3 === 0 || array1[i] % 5 === 0) {
-//       array1[i] = array1[i] + array2[i];
-//     } 
+//       newArr.push(array1[i] + array2[i]);
+//     }
+//     else {
+//       newArr.push(array1[i]);
+//     }
 //   }
-//     return array1;
+//   return newArr;
 // }
 
+//solution ES6 reassigning the values in array1
+const mergingTripletsAndQuints = (array1, array2) => {
+  for (let i = 0; i < array1.length; i++){
+    if (array1[i] % 3 === 0 || array1[i] % 5 === 0) {
+      array1[i] = array1[i] + array2[i];
+    }
+  }
+  return array1;
+}
 // Uncomment these to check your work!
 console.log(mergingTripletsAndQuints([1, 2, 3, 4, 5, 15], [1, 3, 6, 7, 8, 9])); // expected log [1, 2, 9, 4, 13, 24]
 console.log(mergingTripletsAndQuints([1, 1, 3, 9, 5, 15], [1, 2, 3, 4, 5, 6])); // expected log [1, 1, 6, 13, 10, 21]
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Challenge 23: While Loops - Counters
+
+/*
+Using a WHILE loop, write a function imAboutToExplodeWithExcitement which prints a countdown from n. 
+	When the countdown gets to 5, print 'Oh wow, I can't handle the anticipation!' When it's at 3, print 'I'm about to explode with excitement!' 
+	When the counter is finished, print 'That was kind of a let down'.
+*/
+
+//declare a function imAboutToExplodeWithExcitement
+//input: number
+//output: number
+function imAboutToExplodeWithExcitement(n){
+  // ADD CODE HERE
+  while (n >= 0) {
+    if (n === 5) {
+      console.log(`Oh wow, I can't handle the anticipation!`)
+    }
+    else if (n === 3) {
+      console.log(`I'm about to explode with excitement!`)
+    }
+    else if (n === 0) {
+      console.log(`That was kind of a let down`)
+    }
+    else {
+      console.log(n);
+    }
+    n--;
+  }
+}
+
+// Uncomment the line below to check your work!
+imAboutToExplodeWithExcitement(10); // expected log 10, 9, 8, 7, 6, 'Oh wow, I can't handle the anticipation!', 4, I'm about to explode with excitement!', 2, 1, 'That was kind of a let down'
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Challenge 24: 
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-//Challenge 23:
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
