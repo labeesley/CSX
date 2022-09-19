@@ -698,7 +698,8 @@ console.log(mergingTripletsAndQuints([1, 1, 3, 9, 5, 15], [1, 2, 3, 4, 5, 6])); 
 
 /*
 Using a WHILE loop, write a function imAboutToExplodeWithExcitement which prints a countdown from n. 
-	When the countdown gets to 5, print 'Oh wow, I can't handle the anticipation!' When it's at 3, print 'I'm about to explode with excitement!' 
+	When the countdown gets to 5, print 'Oh wow, I can't handle the anticipation!' 
+	When it's at 3, print 'I'm about to explode with excitement!' 
 	When the counter is finished, print 'That was kind of a let down'.
 */
 
@@ -730,31 +731,218 @@ imAboutToExplodeWithExcitement(10); // expected log 10, 9, 8, 7, 6, 'Oh wow, I c
 ////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-//Challenge 24: 
+//Challenge 24: Control Flow - if statements and the Math object
 
+/*
+Using an IF/ELSE statement, write a function closestToTheMark that takes two player inputs as number arguments. 
+	The function will return 'Player 1 is closest' or 'Player 2 is closest' 
+	depending on which player input is closest to the randomly generated number.
+
+Note: Due to the output being based off of a random factor, 
+	the tests provided below cannot determine if you have solved the prompt exactly. 
+	The test cases for this challenge check for the correct data types only.
+*/
+
+//declare a function
+//input: number
+//output: string
+function closestToTheMark(player1, player2){
+  const theMark = Math.floor(Math.random() * 100)
+  console.log(`If theMark is ${theMark}...`);
+  // ADD CODE HERE
+  if (Math.abs(theMark - player1) < Math.abs(theMark - player2)) {
+    return 'Player 1 is closest';
+  }
+  else {
+    return 'Player 2 is closest';
+  }
+}
+
+// Uncomment the line below to check your work!
+console.log(closestToTheMark(25, 75));
+//Example:
+// 'If theMark is 26...''Player 1 is closest'
+
+//Vocab
+//Math.floor: function that returns the largest integer less than/equal to a given number
+//Math.random: function returns a floating-point, pseudo-random number in the range 0 to less than 1 (inclusive of 0, but not 1) with approximately uniform distribution over that range — which you can then scale to your desired range. The implementation selects the initial seed to the random number generation algorithm; it cannot be chosen or reset by the user.
+//Math.abs(): function returns the absolute value of a number. That is, it returns x if x is positive or zero, and the negation of x if x is negative.
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Challenge 25: Loops - Range
+
+/*
+Using a loop, write a function getTheRange which finds the range (difference between high and low) of arr. 
+	The value returned should be an array with the low, high, and range.
+*/
+
+//declare a function getTheRange
+//input: array (numbers)
+//output: array (low, high, range)
+function getTheRange(arr){
+  // ADD CODE HERE
+  let min = arr[0];
+  let max = arr[0];
+  for (let i = 0; i < arr.length; i++) {
+    if (min > arr[i]) {
+      min = arr[i];
+    }
+    if (max < arr[i]) {
+      max = arr[i];
+    }
+  }
+  let range = max - min;
+  return arr = [min, max, range];
+}
+
+//Using Math.min/Math.max methods
+// const getTheRange = arr => {
+//   let min = Math.min(...arr);
+//   let max = Math.max(...arr);
+//   let range = max - min;
+//   return arr = [min, max, range];
+// }
+
+// Uncomment these to check your work!
+console.log(getTheRange([3, 2, 5, 4, 7, 9, 10])); // expect log [2, 10, 8]
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
+//Challenge 26: Loops - Multiple Conditions
+
+/*
+Write a function addingAllTheWeirdStuff 
+	which adds the sum of all the odd numbers in array2 to each element under 10 in array1. 
+	Similarly, addingAllTheWeirdStuff should also add the sum of all the even numbers in array2 
+	to those elements over 10 in array1.
+
+BONUS: If any element in array2 is greater than 20, add 1 to every element in array1.
+*/
+
+//declare a function addingAllTheWeirdStuff
+//input: array (numbers)
+//output: array
+function addingAllTheWeirdStuff(array1, array2){
+  // ADD CODE HERE
+  let sumOfOdd = 0;
+  let sumOfEven = 0;
+  let greaterThan20 = false;
+  
+  for (let i = 0; i < array2.length; i++) {
+    if (array2[i] % 2 === 0) {
+      sumOfEven += array2[i];
+    }
+    else {
+      sumOfOdd += array2[i];
+    }
+    if (array2[i] > 20) {
+      greaterThan20 = true;
+    }
+  }
+  
+  if (greaterThan20 === true) {
+    sumOfOdd += 1;
+    sumOfEven += 1;
+  }
+  
+  for (let j = 0; j < array1.length; j++) {
+    if (array1[j] > 10) {
+      array1[j] = array1[j] + sumOfEven;
+    }
+    if (array1[j] < 10) {
+      array1[j] = array1[j] + sumOfOdd;
+    }
+  }
+
+  return array1;
+}
+
+// Uncomment these to check your work!
+console.log(addingAllTheWeirdStuff([1, 3, 5, 17, 15], [1, 2, 3, 4, 5])); // expected log [10, 12, 14, 23, 21]
+console.log(addingAllTheWeirdStuff([1, 3, 5, 17, 15, 1], [1, 2, 3, 4, 5, 22])); // expected log [11, 13, 15, 46, 44, 11]
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
+//Challenge 27: disemvowel
+
+/*
+Write a function disemvowel that takes in a string and returns a new string with all vowels removed.
+*/
+
+//declare a function
+//input: string
+//output: string (w/out vowels)
+function disemvowel(string) { //'Codesmith is the best'
+  //declare a variable vowel
+  //use replace() method to remove vowels from string
+  const vowel = /[AEIOUaeiou]/g;
+  string = string.replace(vowel, '')
+  
+  return string;
+}
+
+// Uncomment these to check your work!
+console.log(disemvowel('CodeSmith')); // => 'CdSmth'
+console.log(disemvowel('BANANA')); // => 'BNN'
+console.log(disemvowel('hello world')); // => 'hll wrld'
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
+//Challenge 28: addWaldo
+
+/*
+Create a function addWaldo that accepts an object with keys being first names and values being last names. 
+	For example addWaldo({'Luke': 'Skywalker', 'Harley': 'Quinn', 'Ryan': 'Reynolds'}) 
+	should add the key 'Waldo' with the value 'unknown' to the object and return the mutated object.
+*/
+
+//declare a function addWaldo that accepts and object for its parameter
+	//needs to add the key Waldo with an unknown value into any object that 	invokes the function
+function addWaldo(place){
+  //declare a variable with the key and value that needs to be added to object
+  let waldo = {'Waldo': 'unknown'};
+  //use Object.assign() method to add the value waldo to current object
+  //return place
+  return Object.assign(place, waldo);
+  // place['Waldo'] = 'unknown';
+  // return place;
+}
+ 
+//bracket notation or dot notation
+//function addWaldo(place){
+  // place['Waldo'] = 'unknown';
+  // return place;
+//}
+
+// Uncomment these to check your work!
+const siliconValley = {'Richard': 'Hendricks', 'Erlich': 'Bachman', 'Bertram': 'Gilfoyle'}
+console.log(addWaldo(siliconValley)) // should log:{ Richard: 'Hendricks', Erlich: 'Bachman', Bertram: 'Gilfoyle', Waldo: 'unknown' }
+
+//Object.assign() method copies all enumerable own properties from one or more source objects to a target object. It returns the modified target object.
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
+//Challenge 29:
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
+//Challenge 30:
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
 
+//Challenge 31:
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Challenge 32:
 
 
 
